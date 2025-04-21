@@ -2,7 +2,6 @@ Here’s a clean and descriptive `README.md` for your **Pile** project:
 
 ---
 
-```markdown
 # 🗂️ Pile
 
 **Pile** is a curated academic and professional journal digest app built with Streamlit. It pulls the most recent articles from 50+ journals in categories like Leadership, Change Management, and Higher Education — and presents them in a clean, searchable format with AI-generated summaries and keywords.
@@ -76,7 +75,6 @@ Your browser will open automatically at [http://localhost:8501](http://localhost
 ---
 
 > Built by [@grumpscat](https://github.com/grumpscat)
-```
 
 ---
 
