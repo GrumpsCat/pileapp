@@ -91,8 +91,8 @@ CATEGORY_EMOJIS = {
 from sentence_transformers import SentenceTransformer
 
 # Load sentence-transformer model on CPU and pass to KeyBERT
-embedding_model = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
-kw_model = KeyBERT(model=embedding_model)
+#embedding_model = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
+#kw_model = KeyBERT(model=embedding_model)
 selected_articles = []
 
 # ---------------- SIDEBAR EMAIL ---------------- #
