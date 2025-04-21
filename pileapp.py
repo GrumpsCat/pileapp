@@ -86,13 +86,17 @@ CATEGORY_EMOJIS = {
     "Campus Technology": "💻"
 }
 
-
 # ---------------- MODELS ---------------- #
 from sentence_transformers import SentenceTransformer
 
 # Load sentence-transformer model on CPU and pass to KeyBERT
-# embedding_model = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
-# kw_model = KeyBERT(model=embedding_model)
+try:
+    embedding_model = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
+    kw_model = KeyBERT(model=embedding_model)
+except Exception as e:
+    st.error(f"🔴 Failed to load embedding model: {e}")
+    kw_model = None  # So we can check later
+
 selected_articles = []
 
 # ---------------- SIDEBAR EMAIL ---------------- #
@@ -115,8 +119,15 @@ def format_date(entry):
             return None
 
 def extract_keywords(text):
-    keywords = kw_model.extract_keywords(text, keyphrase_ngram_range=(1, 2), stop_words='english', top_n=5)
-    return [kw[0] for kw in keywords]
+    if kw_model is None:
+        return []
+    try:
+        keywords = kw_model.extract_keywords(text, keyphrase_ngram_range=(1, 2), stop_words='english', top_n=5)
+        return [kw[0] for kw in keywords]
+    except Exception as e:
+        st.warning(f"Keyword extraction failed: {e}")
+        return []
+
 
 def summarize_text(text):
     return text[:300]  # Clean summary (no prefix)
