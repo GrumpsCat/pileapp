@@ -210,7 +210,7 @@ for category in grouped_articles:
                     key = f"{unique_hash}-{next(key_counter)}"
 
                     summary = summarize_text(art["content"])
-                    # keywords = extract_keywords(art["content"])
+                    keywords = extract_keywords(art["content"])
                     art["summary"] = summary
                     art["keywords"] = keywords
                     art["date"] = art["published"].strftime("%Y-%m-%d")
